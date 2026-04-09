@@ -1,15 +1,26 @@
-/* 1. APPLY BOX-SIZING GLOBALLY */
-/* This ensures padding and borders don't increase the total width of elements */
+/* PART 1: PRE-LAB ANALYSIS
+  1. Which sections are crowded? 
+     The "Personal Projects" and "Contact Details" sections feel tight; 
+     text is too close to the borders.
+  2. Which elements lack spacing? 
+     Navigation items and list items (li) need more breathing room 
+     to improve readability.
+  3. What layout problems do you see? 
+     Without box-sizing: border-box, adding borders or padding 
+     might cause containers to break the alignment.
+*/
+
 * {
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background-color: #1a1a1a;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     color: #eeeeee;
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -17,89 +28,111 @@ body {
 
 header {
     background-color: #000000;
-    /* IMPROVED HEADER PADDING */
-    padding: 20px 5%; 
+    padding: 25px 10%; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #fbd117;
+    border-bottom: 3px solid #fbd117; 
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* IMPROVED NAVIGATION SPACING */
 .nav-back {
-    background: #fbd117;
-    color: #000;
-    padding: 10px 22px; /* Increased padding for better click area */
-    border-radius: 5px;
-    font-size: 14px;
-    margin-right: 10px; /* Added margin */
+    background: transparent;
+    color: #fbd117;
+    padding: 10px 20px;
+    border: 2px solid #fbd117; 
+    border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.nav-back:hover {
+    background: #fbd117;
+    color: #000;
+    margin-left: -5px; 
 }
 
 .hero-section {
     text-align: center;
-    padding: 80px 20px; /* Increased padding for more white space */
+    padding: 100px 20px; 
     background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
-    margin-bottom: 20px; /* Added margin to separate from content */
+    margin-bottom: 40px; 
+}
+
+.profile-img {
+    border-radius: 15px; 
+    border: 3px solid #fbd117;
+    padding: 5px; 
+    margin-bottom: 25px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.7);
 }
 
 main {
-    max-width: 1100px;
-    margin: 20px auto; /* Added vertical margin */
-    padding: 40px 30px; /* Increased side padding */
+    max-width: 1200px;
+    margin: 0 auto 60px auto; 
+    padding: 0 40px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 35px; /* Increased gap between grid items */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px; 
     flex: 1;
 }
 
 section {
-    background: #262626;
-    padding: 35px; /* Increased internal padding for readability */
-    border-radius: 12px;
-    border: 1px solid #333; /* Added border as requested */
-    border-top: 4px solid #fbd117; 
-    margin-bottom: 10px; /* Margin for stacked layout on mobile */
-    transition: transform 0.3s ease;
+    background: #222222;
+    padding: 40px; 
+    border-radius: 0px; 
+    border-left: 5px solid #fbd117; 
+    box-shadow: 10px 10px 0px #000000; 
+    transition: all 0.3s ease;
 }
 
-/* IMPROVED TYPOGRAPHY SPACING */
+section:hover {
+    transform: translate(-5px, -5px); 
+    box-shadow: 15px 15px 0px #fbd117; 
+}
+
 h2 {
     color: #fbd117;
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    margin-top: 0;
-    margin-bottom: 20px; /* Increased margin below title */
-    border-bottom: 1px solid #333;
-    padding-bottom: 12px;
+    font-size: 1.4rem;
+    margin-bottom: 25px; 
+    letter-spacing: 1px;
 }
 
+
 ul, ol {
-    padding-left: 25px; /* Adjusted padding */
-    line-height: 2; /* Increased line height for readability */
+    padding-left: 20px;
 }
 
 li {
-    margin-bottom: 12px; /* Increased margin between list items */
+    margin-bottom: 15px; 
+    color: #bbb;
 }
 
-.welcome-box {
-    background: #262626;
-    padding: 60px; /* Increased padding */
-    border-radius: 20px;
+
+.project-btn {
+    display: block;
+    background: #333;
+    color: #fbd117;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #444;
+    text-decoration: none;
     text-align: center;
-    border: 2px solid #333; /* Thicker border */
-    margin: 20px; /* External margin */
+    font-weight: bold;
+}
+
+.project-btn:hover {
+    border-color: #fbd117;
+    background: #222;
 }
 
 footer {
     background: #000;
-    padding: 30px; /* Increased padding */
+    padding: 40px;
+    margin-top: 40px;
     text-align: center;
     border-top: 1px solid #333;
-    margin-top: auto; /* Pushes footer to bottom */
 }
