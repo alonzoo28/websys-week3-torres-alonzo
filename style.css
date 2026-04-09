@@ -1,170 +1,188 @@
-/* PART 1: PRE-LAB ANALYSIS
-  1. Which sections are crowded? 
-     The "Personal Projects" and "Contact Details" sections feel tight; 
-     text is too close to the borders.
-  2. Which elements lack spacing? 
-     Navigation items and list items (li) need more breathing room 
-     to improve readability.
-  3. What layout problems do you see? 
-     Without box-sizing: border-box, adding borders or padding 
-     might cause containers to break the alignment.
-*/
-
-/* 1. THE BOX MODEL FOUNDATION */
+/* GLOBAL BOX-MODEL SETTINGS */
 * {
+    /* Ensures padding and borders don't increase the element's width */
+    box-sizing: border-box; 
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Part of your Prof's requirement */
 }
 
 body {
-    background-color: #0f0f0f; /* Deeper black for more contrast */
-    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: #1a1a1a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #eeeeee;
-    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6; /* Improved typography spacing */
 }
 
-/* 2. NAVIGATION - Floating Bar Style */
 header {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px); /* Glass effect */
-    padding: 20px 8%;
+    background-color: #000000;
+    /* Added consistent padding for navigation spacing */
+    padding: 20px 5%; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #333;
+    border-bottom: 3px solid #fbd117; /* Stronger border for header */
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 .nav-back {
-    color: #fbd117;
     text-decoration: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 2px;
-    border: 1px solid #fbd117;
-    padding: 8px 20px;
-    transition: 0.4s;
+    font-weight: bold;
+    background: #fbd117;
+    color: #000;
+    padding: 10px 20px; /* Increased padding for better click area */
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s;
+    display: inline-block;
+    border: 2px solid transparent;
 }
 
 .nav-back:hover {
-    background: #fbd117;
-    color: #000;
+    background: #ffffff;
+    border: 2px solid #fbd117;
 }
 
-/* 3. HERO SECTION - Massive Spacing Change */
+.logo-text {
+    color: #fff;
+    letter-spacing: 3px; /* Improved typography spacing */
+    font-weight: 800;
+}
+
 .hero-section {
-    padding: 120px 10%;
-    text-align: left; /* Changed from center to left for a new look */
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    background: radial-gradient(circle at top right, #222, #0f0f0f);
+    text-align: center;
+    padding: 80px 20px; /* Increased vertical padding */
+    background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+    margin-bottom: 20px; /* Margin between hero and main content */
 }
 
 .profile-img {
-    width: 180px;
-    height: 180px;
-    border-radius: 30px; /* Squircle shape */
-    border: 2px solid #fbd117;
-    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #fbd117; /* Box Model: Border */
+    margin-bottom: 20px; /* Box Model: Margin */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
 h1 {
-    font-size: 4rem;
-    font-weight: 900;
-    color: #fff;
-    margin: 0;
+    font-size: 3rem;
+    margin: 15px 0;
+    letter-spacing: 1px;
 }
 
-/* 4. MAIN CONTENT - Masonry/Card Style */
 main {
-    max-width: 1200px;
-    margin: -50px auto 50px; /* Pulls content up over the hero */
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto; /* Centering the container */
+    padding: 60px 25px; /* Increased padding for layout readability */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px; /* Increased gap between sections */
+    flex: 1;
 }
 
 section {
-    background: #1a1a1a;
-    padding: 40px;
-    border-radius: 20px;
-    border: 1px solid #2a2a2a;
-    /* Box Model applied: Margin creates external space */
-    margin-bottom: 20px; 
+    background: #262626;
+    padding: 35px; /* Box Model: Increased Padding for internal spacing */
+    border-radius: 15px;
+    border: 1px solid #333; /* Box Model: Border */
+    border-top: 5px solid #fbd117; 
+    transition: transform 0.3s ease, background 0.3s ease;
+    /* Margin is handled by the 'gap' in the parent grid */
 }
 
-/* Highlighting specific sections to break the grid */
-section:nth-child(odd) {
-    border-right: 4px solid #fbd117;
-}
-
-section:nth-child(even) {
-    border-left: 4px solid #fbd117;
+section:hover {
+    transform: translateY(-10px);
+    background: #2d2d2d;
+    border-color: #fbd117;
 }
 
 h2 {
     color: #fbd117;
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     text-transform: uppercase;
-    letter-spacing: 4px;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
+    margin-bottom: 20px; /* Space below heading */
+    border-bottom: 1px solid #444;
+    padding-bottom: 12px;
+    letter-spacing: 1.5px;
 }
 
-h2::after {
-    content: "";
-    height: 1px;
-    background: #333;
-    flex: 1;
-    margin-left: 20px;
-}
-
-/* 5. LISTS & INTERACTION */
-ul {
-    list-style: none; /* Removed dots for a cleaner UI */
+ul, ol {
+    padding-left: 25px; /* Spacing for list markers */
 }
 
 li {
-    padding: 15px 0;
-    border-bottom: 1px solid #222;
+    margin-bottom: 12px; /* Improved vertical spacing between items */
+    color: #cccccc;
+}
+
+/* Home Page Specific Box Improvements */
+.home-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    padding: 20px;
 }
 
-li strong {
-    color: #fbd117;
+.welcome-box {
+    background: #262626;
+    padding: 60px 40px; /* Heavy padding for a centered focal point */
+    border-radius: 25px;
+    text-align: center;
+    border: 2px solid #333;
+    max-width: 500px;
 }
 
-/* 6. BUTTONS */
-.project-btn {
+.btn-main {
     display: inline-block;
+    padding: 16px 40px;
     background: #fbd117;
     color: #000;
-    padding: 15px 30px;
-    margin-top: 20px;
-    margin-right: 15px;
     text-decoration: none;
+    border-radius: 50px;
     font-weight: bold;
-    border-radius: 5px;
-    transition: transform 0.2s;
+    margin-top: 30px; /* Margin to separate from text above */
+    transition: 0.3s;
 }
 
-.project-btn:hover {
-    transform: translateY(-5px);
+.btn-main:hover {
+    transform: scale(1.05);
+    background: #fff;
 }
 
 footer {
-    text-align: center;
-    padding: 60px;
     background: #000;
-    color: #555;
-    font-size: 12px;
-    letter-spacing: 2px;
+    padding: 30px; /* Box Model: Padding */
+    text-align: center;
+    border-top: 2px solid #333;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 40px; /* Ensure space from the content above */
+}
+
+.project-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.project-btn {
+    background: #333;
+    color: #fbd117;
+    padding: 14px; /* Internal button padding */
+    border: 1px solid #fbd117;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.project-btn:hover {
+    background: #fbd117;
+    color: #000;
 }
