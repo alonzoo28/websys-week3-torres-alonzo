@@ -1,9 +1,25 @@
-/* GLOBAL BOX-MODEL SETTINGS */
+/* PART 1: PRE-LAB ANALYSIS
+
+1. Which sections are crowded?
+- The main content area looked crowded because all sections were placed in a grid, making everything feel compressed.
+- The welcome box on the home page also felt tight due to limited spacing inside.
+
+2. Which elements lack spacing?
+- The header elements (logo and navigation) were too close to each other.
+- Text inside sections like headings, lists, and paragraphs needed better spacing.
+- Sections did not have enough margin between each other, making them look connected.
+
+3. What layout problems do you see?
+- The layout was too uniform (all boxes same size), which made it less visually interesting.
+- There was no clear separation between important sections.
+- Box model properties like margin and padding were not fully optimized.
+- Typography spacing (line height and text spacing) needed improvement for better readability.
+
+*/
 * {
-    /* Ensures padding and borders don't increase the element's width */
-    box-sizing: border-box; 
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -13,176 +29,234 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    line-height: 1.6; /* Improved typography spacing */
+    line-height: 1.6;
 }
 
 header {
     background-color: #000000;
-    /* Added consistent padding for navigation spacing */
-    padding: 20px 5%; 
+    padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid #fbd117; /* Stronger border for header */
+    border-bottom: 2px solid #fbd117;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
+nav {
+    display: flex;
+    gap: 15px;
+}
 
-.nav-back {
+nav a {
     text-decoration: none;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-back {
     background: #fbd117;
     color: #000;
-    padding: 10px 20px; /* Increased padding for better click area */
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 6px;
     font-size: 14px;
-    transition: 0.3s;
-    display: inline-block;
-    border: 2px solid transparent;
 }
 
 .nav-back:hover {
     background: #ffffff;
-    border: 2px solid #fbd117;
 }
 
 .logo-text {
     color: #fff;
-    letter-spacing: 3px; /* Improved typography spacing */
+    letter-spacing: 2px;
     font-weight: 800;
 }
 
 .hero-section {
     text-align: center;
-    padding: 80px 20px; /* Increased vertical padding */
+    padding: 80px 20px;
     background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
-    margin-bottom: 20px; /* Margin between hero and main content */
 }
 
 .profile-img {
     border-radius: 50%;
-    border: 5px solid #fbd117; /* Box Model: Border */
-    margin-bottom: 20px; /* Box Model: Margin */
+    border: 4px solid #fbd117;
+    margin-bottom: 20px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
-
 h1 {
-    font-size: 3rem;
-    margin: 15px 0;
-    letter-spacing: 1px;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #fbd117;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
 }
 
 main {
     max-width: 1100px;
-    margin: 0 auto; /* Centering the container */
-    padding: 60px 25px; /* Increased padding for layout readability */
+    margin: 40px auto;
+    padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px; /* Increased gap between sections */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     flex: 1;
 }
 
 section {
     background: #262626;
-    padding: 35px; /* Box Model: Increased Padding for internal spacing */
-    border-radius: 15px;
-    border: 1px solid #333; /* Box Model: Border */
-    border-top: 5px solid #fbd117; 
-    transition: transform 0.3s ease, background 0.3s ease;
-    /* Margin is handled by the 'gap' in the parent grid */
+    padding: 30px;
+    border-radius: 12px;
+    border-top: 4px solid #fbd117;
+    transition: transform 0.3s ease;
 }
 
 section:hover {
-    transform: translateY(-10px);
+    transform: translateY(-6px);
     background: #2d2d2d;
-    border-color: #fbd117;
 }
 
-h2 {
-    color: #fbd117;
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    margin-bottom: 20px; /* Space below heading */
-    border-bottom: 1px solid #444;
-    padding-bottom: 12px;
-    letter-spacing: 1.5px;
+p {
+    margin-bottom: 10px;
 }
 
 ul, ol {
-    padding-left: 25px; /* Spacing for list markers */
+    padding-left: 20px;
+    margin-top: 10px;
+    line-height: 1.8;
 }
 
 li {
-    margin-bottom: 12px; /* Improved vertical spacing between items */
+    margin-bottom: 8px;
     color: #cccccc;
 }
 
-/* Home Page Specific Box Improvements */
+a.site-link {
+    color: #fbd117;
+    text-decoration: none;
+}
+
+a.site-link:hover {
+    text-decoration: underline;
+}
+
 .home-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
-    padding: 20px;
+    padding: 40px 20px;
+    flex: 1;
 }
 
 .welcome-box {
     background: #262626;
-    padding: 60px 40px; /* Heavy padding for a centered focal point */
-    border-radius: 25px;
+    padding: 60px 40px;
+    border-radius: 20px;
     text-align: center;
-    border: 2px solid #333;
+    border: 1px solid #333;
     max-width: 500px;
 }
 
 .btn-main {
     display: inline-block;
-    padding: 16px 40px;
+    padding: 15px 35px;
     background: #fbd117;
     color: #000;
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
-    margin-top: 30px; /* Margin to separate from text above */
-    transition: 0.3s;
-}
-
-.btn-main:hover {
-    transform: scale(1.05);
-    background: #fff;
+    margin-top: 25px;
 }
 
 footer {
     background: #000;
-    padding: 30px; /* Box Model: Padding */
+    padding: 30px 20px;
     text-align: center;
-    border-top: 2px solid #333;
+    border-top: 1px solid #333;
     font-size: 0.9rem;
-    color: #888;
-    margin-top: 40px; /* Ensure space from the content above */
+    color: #777;
+    margin-top: 40px;
 }
 
 .project-links {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .project-btn {
     background: #333;
     color: #fbd117;
-    padding: 14px; /* Internal button padding */
+    padding: 12px;
     border: 1px solid #fbd117;
     border-radius: 8px;
     text-decoration: none;
     text-align: center;
     font-weight: bold;
+    font-size: 14px;
     transition: 0.3s ease;
 }
 
 .project-btn:hover {
     background: #fbd117;
     color: #000;
+    transform: translateX(5px);
+}
+
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.intro-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #262626;
+    padding: 30px;
+    border-radius: 12px;
+    border-top: 0px solid #fbd117;
+}
+
+.intro-left {
+    flex: 1;
+    text-align: center;
+}
+
+.intro-right {
+    flex: 2;
+}
+
+.info-grid {
+    display: flex;
+    gap: 10px;
+}
+
+.info-card {
+    flex: 1;
+    background: #262626;
+    padding: 25px;
+    border-radius: 12px;
+    border-top: 40px solid #fbd117;
+}
+
+@media (max-width: 768px) {
+    .intro-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .info-grid {
+        flex-direction: column;
+    }
 }
