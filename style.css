@@ -10,129 +10,161 @@
      might cause containers to break the alignment.
 */
 
+/* 1. THE BOX MODEL FOUNDATION */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box; /* Part of your Prof's requirement */
 }
 
 body {
-    background-color: #1a1a1a;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0f0f0f; /* Deeper black for more contrast */
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     color: #eeeeee;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    line-height: 1.7;
 }
 
+/* 2. NAVIGATION - Floating Bar Style */
 header {
-    background-color: #000000;
-    padding: 25px 10%; 
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px); /* Glass effect */
+    padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid #fbd117; 
+    border-bottom: 1px solid #333;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 .nav-back {
-    background: transparent;
     color: #fbd117;
-    padding: 10px 20px;
-    border: 2px solid #fbd117; 
-    border-radius: 4px;
     text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+    border: 1px solid #fbd117;
+    padding: 8px 20px;
+    transition: 0.4s;
 }
 
 .nav-back:hover {
     background: #fbd117;
     color: #000;
-    margin-left: -5px; 
 }
 
+/* 3. HERO SECTION - Massive Spacing Change */
 .hero-section {
-    text-align: center;
-    padding: 100px 20px; 
-    background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
-    margin-bottom: 40px; 
+    padding: 120px 10%;
+    text-align: left; /* Changed from center to left for a new look */
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background: radial-gradient(circle at top right, #222, #0f0f0f);
 }
 
 .profile-img {
-    border-radius: 15px; 
-    border: 3px solid #fbd117;
-    padding: 5px; 
-    margin-bottom: 25px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+    width: 180px;
+    height: 180px;
+    border-radius: 30px; /* Squircle shape */
+    border: 2px solid #fbd117;
+    object-fit: cover;
 }
 
+h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+}
+
+/* 4. MAIN CONTENT - Masonry/Card Style */
 main {
     max-width: 1200px;
-    margin: 0 auto 60px auto; 
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px; 
-    flex: 1;
+    margin: -50px auto 50px; /* Pulls content up over the hero */
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 section {
-    background: #222222;
-    padding: 40px; 
-    border-radius: 0px; 
-    border-left: 5px solid #fbd117; 
-    box-shadow: 10px 10px 0px #000000; 
-    transition: all 0.3s ease;
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #2a2a2a;
+    /* Box Model applied: Margin creates external space */
+    margin-bottom: 20px; 
 }
 
-section:hover {
-    transform: translate(-5px, -5px); 
-    box-shadow: 15px 15px 0px #fbd117; 
+/* Highlighting specific sections to break the grid */
+section:nth-child(odd) {
+    border-right: 4px solid #fbd117;
+}
+
+section:nth-child(even) {
+    border-left: 4px solid #fbd117;
 }
 
 h2 {
     color: #fbd117;
-    font-size: 1.4rem;
-    margin-bottom: 25px; 
-    letter-spacing: 1px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
 }
 
+h2::after {
+    content: "";
+    height: 1px;
+    background: #333;
+    flex: 1;
+    margin-left: 20px;
+}
 
-ul, ol {
-    padding-left: 20px;
+/* 5. LISTS & INTERACTION */
+ul {
+    list-style: none; /* Removed dots for a cleaner UI */
 }
 
 li {
-    margin-bottom: 15px; 
-    color: #bbb;
+    padding: 15px 0;
+    border-bottom: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
 }
 
-
-.project-btn {
-    display: block;
-    background: #333;
+li strong {
     color: #fbd117;
-    padding: 15px;
-    margin-top: 10px;
-    border: 1px solid #444;
+}
+
+/* 6. BUTTONS */
+.project-btn {
+    display: inline-block;
+    background: #fbd117;
+    color: #000;
+    padding: 15px 30px;
+    margin-top: 20px;
+    margin-right: 15px;
     text-decoration: none;
-    text-align: center;
     font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.2s;
 }
 
 .project-btn:hover {
-    border-color: #fbd117;
-    background: #222;
+    transform: translateY(-5px);
 }
 
 footer {
-    background: #000;
-    padding: 40px;
-    margin-top: 40px;
     text-align: center;
-    border-top: 1px solid #333;
+    padding: 60px;
+    background: #000;
+    color: #555;
+    font-size: 12px;
+    letter-spacing: 2px;
 }
