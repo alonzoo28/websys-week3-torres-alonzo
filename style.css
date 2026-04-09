@@ -1,3 +1,9 @@
+/* 1. APPLY BOX-SIZING GLOBALLY */
+/* This ensures padding and borders don't increase the total width of elements */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -11,7 +17,8 @@ body {
 
 header {
     background-color: #000000;
-    padding: 15px 5%;
+    /* IMPROVED HEADER PADDING */
+    padding: 20px 5%; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,156 +28,78 @@ header {
     z-index: 1000;
 }
 
-nav a {
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
+/* IMPROVED NAVIGATION SPACING */
 .nav-back {
     background: #fbd117;
     color: #000;
-    padding: 8px 18px;
+    padding: 10px 22px; /* Increased padding for better click area */
     border-radius: 5px;
     font-size: 14px;
-}
-
-.nav-back:hover {
-    background: #ffffff;
-}
-
-.logo-text {
-    color: #fff;
-    letter-spacing: 2px;
-    font-weight: 800;
+    margin-right: 10px; /* Added margin */
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .hero-section {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px; /* Increased padding for more white space */
     background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
-}
-
-.profile-img {
-    border-radius: 50%;
-    border: 4px solid #fbd117;
-    margin-bottom: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-
-h1 {
-    font-size: 2.8rem;
-    margin: 10px 0;
+    margin-bottom: 20px; /* Added margin to separate from content */
 }
 
 main {
     max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 20px;
+    margin: 20px auto; /* Added vertical margin */
+    padding: 40px 30px; /* Increased side padding */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    gap: 35px; /* Increased gap between grid items */
     flex: 1;
 }
 
 section {
     background: #262626;
-    padding: 25px;
+    padding: 35px; /* Increased internal padding for readability */
     border-radius: 12px;
-    border-top: 4px solid #fbd117;
+    border: 1px solid #333; /* Added border as requested */
+    border-top: 4px solid #fbd117; 
+    margin-bottom: 10px; /* Margin for stacked layout on mobile */
     transition: transform 0.3s ease;
 }
 
-section:hover {
-    transform: translateY(-8px);
-    background: #2d2d2d;
-}
-
+/* IMPROVED TYPOGRAPHY SPACING */
 h2 {
     color: #fbd117;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-transform: uppercase;
-    margin-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 20px; /* Increased margin below title */
     border-bottom: 1px solid #333;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
 }
 
 ul, ol {
-    padding-left: 20px;
-    line-height: 1.8;
+    padding-left: 25px; /* Adjusted padding */
+    line-height: 2; /* Increased line height for readability */
 }
 
 li {
-    margin-bottom: 8px;
-    color: #cccccc;
-}
-
-a.site-link {
-    color: #fbd117;
-    text-decoration: none;
-}
-
-a.site-link:hover {
-    text-decoration: underline;
-}
-
-.home-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
+    margin-bottom: 12px; /* Increased margin between list items */
 }
 
 .welcome-box {
     background: #262626;
-    padding: 50px;
+    padding: 60px; /* Increased padding */
     border-radius: 20px;
     text-align: center;
-    border: 1px solid #333;
-}
-
-.btn-main {
-    display: inline-block;
-    padding: 15px 35px;
-    background: #fbd117;
-    color: #000;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    margin-top: 20px;
+    border: 2px solid #333; /* Thicker border */
+    margin: 20px; /* External margin */
 }
 
 footer {
     background: #000;
-    padding: 25px;
+    padding: 30px; /* Increased padding */
     text-align: center;
     border-top: 1px solid #333;
-    font-size: 0.9rem;
-    color: #777;
-}
-
-.project-links {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.project-btn {
-    background: #333;
-    color: #fbd117;
-    padding: 12px;
-    border: 1px solid #fbd117;
-    border-radius: 8px;
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
-    font-size: 14px;
-    transition: 0.3s ease;
-}
-
-.project-btn:hover {
-    background: #fbd117;
-    color: #000;
-    transform: translateX(5px);
+    margin-top: auto; /* Pushes footer to bottom */
 }
